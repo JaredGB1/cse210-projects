@@ -27,9 +27,10 @@ public class Journal
     {
         using (StreamWriter outputFile = new StreamWriter(_fileName))
         {
+            outputFile.WriteLine("Date,Prompt,Entry");
             foreach(JournalEntry Entry in _entryList)
         {
-           outputFile.WriteLine($"Date:{Entry._currentDateTime.ToShortDateString()} - Prompt: ~~{Entry._prompt}~~Entry:~~{Entry._userEntry}");
+           outputFile.WriteLine($"{Entry._currentDateTime},{Entry._prompt},{Entry._userEntry}");
         }
 
         }
@@ -42,11 +43,15 @@ public class Journal
         string[] lines = System.IO.File.ReadAllLines(_fileName);
         foreach (string line in lines)
         {
-            string[] parts = line.Split("~~");
-            JournalEntry entry= new JournalEntry();
-            entry._prompt=parts[1];
-            entry._userEntry=parts[3];
-            _entryList.Add(entry);
+            string[] parts = line.Split(",");
+            if(parts[0] != "Date")
+            {
+                JournalEntry entry= new JournalEntry();
+                entry._currentDateTime=parts[0];
+                entry._prompt=parts[1];
+                entry._userEntry=parts[2];
+                _entryList.Add(entry);
+            }
         }   
 
         return _entryList;

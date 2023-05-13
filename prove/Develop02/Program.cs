@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        DateTime currentDateTime = DateTime.Now;
         Journal journal= new Journal();
         Prompts prompt=new Prompts();
         string menuNumber="";
@@ -16,6 +17,7 @@ class Program
             if(menuNumber=="1")
             {
                 JournalEntry entry= new JournalEntry();
+                entry._currentDateTime=currentDateTime.ToShortDateString();
                 entry._prompt= prompt.RandomPrompt();
                 Console.WriteLine($"{entry._prompt}");
                 entry._userEntry=Console.ReadLine();
