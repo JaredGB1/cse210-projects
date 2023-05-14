@@ -1,4 +1,5 @@
 using System.IO;
+using Microsoft.VisualBasic.FileIO;
 public class Journal
 {
      public List<JournalEntry> _entryList= new List<JournalEntry>();
@@ -30,7 +31,8 @@ public class Journal
             outputFile.WriteLine("Date,Prompt,Entry");
             foreach(JournalEntry Entry in _entryList)
         {
-           outputFile.WriteLine($"{Entry._currentDateTime},{Entry._prompt},{Entry._userEntry}");
+           string newUserEntry= Entry._userEntry.Replace("\"", "\"\""); 
+           outputFile.WriteLine($"\"{Entry._currentDateTime}\",\"{Entry._prompt}\",\"{newUserEntry}\"");
         }
 
         }
@@ -40,20 +42,36 @@ public class Journal
     public List<JournalEntry> LoadJournal()
     {
         List<JournalEntry> _entryList=new List<JournalEntry>();
-        string[] lines = System.IO.File.ReadAllLines(_fileName);
-        foreach (string line in lines)
+        //string[] lines = System.IO.File.ReadAllLines(_fileName);
+        //foreach (string line in lines)
+        //{
+        //    string[] parts = line.Split(",");
+       //     if(parts[0] != "Date")
+        //    {
+        //        JournalEntry entry= new JournalEntry();
+        //        entry._currentDateTime=parts[0];
+        //        entry._prompt=parts[1];
+        //        entry._userEntry=parts[2];
+        //        _entryList.Add(entry);
+        //   }
+        //}   
+        TextFieldParser parser = new TextFieldParser(_fileName);
+        parser.HasFieldsEnclosedInQuotes = true;
+        parser.SetDelimiters(",");
+        string[] fields;
+        while (!parser.EndOfData)
         {
-            string[] parts = line.Split(",");
-            if(parts[0] != "Date")
+            fields = parser.ReadFields();
+            if(fields[0] != "Date")
             {
                 JournalEntry entry= new JournalEntry();
-                entry._currentDateTime=parts[0];
-                entry._prompt=parts[1];
-                entry._userEntry=parts[2];
+                entry._currentDateTime=fields[0].ToString();
+                entry._prompt=fields[1].ToString();
+                entry._userEntry=fields[2].ToString();
                 _entryList.Add(entry);
             }
-        }   
-
+        } 
+        parser.Close();
         return _entryList;
     }
 }
