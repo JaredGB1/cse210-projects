@@ -42,19 +42,6 @@ public class Journal
     public List<JournalEntry> LoadJournal()
     {
         List<JournalEntry> _entryList=new List<JournalEntry>();
-        //string[] lines = System.IO.File.ReadAllLines(_fileName);
-        //foreach (string line in lines)
-        //{
-        //    string[] parts = line.Split(",");
-       //     if(parts[0] != "Date")
-        //    {
-        //        JournalEntry entry= new JournalEntry();
-        //        entry._currentDateTime=parts[0];
-        //        entry._prompt=parts[1];
-        //        entry._userEntry=parts[2];
-        //        _entryList.Add(entry);
-        //   }
-        //}   
         TextFieldParser parser = new TextFieldParser(_fileName);
         parser.HasFieldsEnclosedInQuotes = true;
         parser.SetDelimiters(",");
