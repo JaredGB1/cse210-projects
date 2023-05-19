@@ -8,8 +8,6 @@ public class JournalEntry
 
     public void DisplayEntry()
     {
-        DateTime currentDateTime = DateTime.Now;
-        _currentDateTime=currentDateTime.ToShortDateString();
         Console.WriteLine($"Date: {_currentDateTime} - Prompt: {_prompt} \n{_userEntry}");
     }
 
