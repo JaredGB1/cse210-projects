@@ -114,7 +114,6 @@ public class Scripture
             getRenderedText();
             Environment.Exit(0);
         }
-
     }
 
     private int VisibleWords()
