@@ -110,6 +110,7 @@ public class Scripture
         }
         if (numberOfVisibleWords == 0)
         {
+            Console.Clear();
             getRenderedText();
             Environment.Exit(0);
         }
