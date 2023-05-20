@@ -53,9 +53,8 @@ public class Scripture
 
     public string IsCompletelyHidden()
     {
-        string status="";
         int numberOfVisibleWords=0;
-
+        string status="";
         foreach(Word word4 in _wordsList)
         {
             string visibility=word4.getVisibility();
@@ -66,6 +65,7 @@ public class Scripture
         }
         if (numberOfVisibleWords==0)
         {
+            getRenderedText();
             status="quit";
         }
         return status;

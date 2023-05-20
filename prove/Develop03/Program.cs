@@ -16,7 +16,7 @@ class Program
             status = Console.ReadLine();
             scripture.HideWords();
             Console.Clear();
-            status=scripture.IsCompletelyHidden();
+            scripture.IsCompletelyHidden();
         }
     }
 }
