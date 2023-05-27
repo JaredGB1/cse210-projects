@@ -7,6 +7,18 @@ public class Scripture
     private List<Word> _wordsList = new List<Word>();
 //Scripture() constructor is in charge of creating a list of scriptures and references.
 //Scripture() constructor will also add the words from the _scriptureText variable to the _wordsList.
+    public Scripture(string reference, string scriptureText)
+    {
+        _reference=reference;
+        _scriptureText=scriptureText;
+        string[] wordsList = _scriptureText.Split(" ");
+        foreach (string words in wordsList)
+        {
+            Word word = new Word(words);
+            _wordsList.Add(word);
+        }
+
+    }
     public Scripture()
     {
         //Creating a List of references and Scripture text.

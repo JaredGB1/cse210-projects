@@ -3,7 +3,12 @@ using System;
 class Program
 {
     static void Main(string[] args)
-    {
+    {   //Code if the user wants to provide the reference and the scripture text
+        //Reference reference = new Reference("Proverbs", 3, 5, 6);
+        //string scriptureText1="Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.";
+        //Scripture scripture=new Scripture(reference.GetReference(),scriptureText1);
+
+        //Code to get a random scripture.
         //Creating a new Scripture variable.
         Scripture scripture = new Scripture();
         string status = "";
