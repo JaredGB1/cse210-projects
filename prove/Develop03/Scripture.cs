@@ -6,17 +6,32 @@ public class Scripture
     private string _scriptureText;
     private List<Word> _wordsList = new List<Word>();
 
-    public Scripture(string scriptureText, string reference)
+    public Scripture()
     {
-        _scriptureText = scriptureText;
-        string[] wordsList = scriptureText.Split(" ");
+        //Creating a List of references and Scripture text.
+        List<string> referenceList = new List<string>();
+        List<string> scriptureList = new List<string>();
+        Reference reference1 = new Reference("Proverbs", 3, 5, 6);
+        referenceList.Add(reference1.GetReference());
+        scriptureList.Add("Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.");
+        Reference reference2 = new Reference("Nephi", 3, 7);
+        referenceList.Add(reference2.GetReference());
+        scriptureList.Add("And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them.");
+        Reference reference3 = new Reference("Doctrine and Covenants", 1, 37, 38);
+        referenceList.Add(reference3.GetReference());
+        scriptureList.Add("Search these commandments, for they are true and faithful, and the prophecies and promises which are in them shall all be fulfilled. What I the Lord have spoken, I have spoken, and I excuse not myself; and though the heavens and the earth pass away, my word shall not pass away, but shall all be fulfilled, whether by mine own voice or by the voice of my servants, it is the same.");
+        //Selecting a random index from 0 - 2 from the reference and scripture list to add it to the  _scriptureText and _reference variables.
+        Random random1 = new Random();
+        int randomIndex1 = random1.Next(0, 2);
+        _scriptureText = scriptureList[randomIndex1];
+        _reference = referenceList[randomIndex1];
+        //Adding the words from the scripture to the _wordsList 
+        string[] wordsList = _scriptureText.Split(" ");
         foreach (string words in wordsList)
         {
             Word word = new Word(words);
             _wordsList.Add(word);
         }
-
-        _reference = reference;
     }
 
     public List<Word> HideWords()
@@ -36,7 +51,7 @@ public class Scripture
                 {
                     while (status2 == "yes")
                     {
-                        if (index < 27)
+                        if (index < _wordsList.Count())
                         {
                             status2 = _wordsList[index].isHidden();
                             _wordsList[index].Hide(_wordsList[index]);
@@ -65,7 +80,7 @@ public class Scripture
                 {
                     while (status2 == "yes")
                     {
-                        if (index < 27)
+                        if (index < _wordsList.Count())
                         {
                             status2 = _wordsList[index].isHidden();
                             _wordsList[index].Hide(_wordsList[index]);
@@ -124,7 +139,7 @@ public class Scripture
             string visibility = word4.getVisibility();
             if (visibility == "Show")
             {
-                numberOfVisibleWords= numberOfVisibleWords + 1;
+                numberOfVisibleWords = numberOfVisibleWords + 1;
             }
         }
         return numberOfVisibleWords;
