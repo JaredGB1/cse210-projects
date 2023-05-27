@@ -5,7 +5,8 @@ public class Scripture
     private string _reference;
     private string _scriptureText;
     private List<Word> _wordsList = new List<Word>();
-
+//Scripture() constructor is in charge of creating a list of scriptures and references.
+//Scripture() constructor will also add the words from the _scriptureText variable to the _wordsList.
     public Scripture()
     {
         //Creating a List of references and Scripture text.
@@ -23,7 +24,7 @@ public class Scripture
         Reference reference4=new Reference("John",3,5);
         referenceList.Add(reference4.GetReference());
         scriptureList.Add("Jesus answered, Verily, verily, I say unto thee, Except a man be born of water and of the Spirit, he cannot enter into the kingdom of God.");
-        //Selecting a random index from 0 - 3 from the reference and scripture list to add it to the  _scriptureText and _reference variables.
+        //Selecting a random index from 0 to 3 from the reference and scripture list to add the value  _scriptureText and _reference variables.
         Random random1 = new Random();
         int randomIndex1 = random1.Next(0, 3);
         _scriptureText = scriptureList[randomIndex1];
@@ -36,12 +37,14 @@ public class Scripture
             _wordsList.Add(word);
         }
     }
-
+    //HideWords() method is in charge of using the Hide method from the Word class.
+    //It will hide random words from the _wordsList.
     public List<Word> HideWords()
     {
         int numberOfWords = _wordsList.Count();
         Random random = new Random();
         int visibleWords = VisibleWords();
+        //If the number of visible words is more than 5, the program will hide a random amount of words between 1 to 5.
         if (visibleWords > 5)
         {
             int numberOfRandomWords = random.Next(1, 5);
@@ -49,14 +52,16 @@ public class Scripture
             {
                 int index = 0;
                 int randomIndex = random.Next(numberOfWords);
-                string status2 = _wordsList[randomIndex].isHidden();
+                //The program will check if the word is hidden or shown.
+                string status2 = _wordsList[randomIndex].IsHidden();
+                //If the word is hidden the program will do a while to find a word from the _wordsList that is shown to hide it.
                 if (status2 == "yes")
                 {
                     while (status2 == "yes")
                     {
                         if (index < _wordsList.Count())
                         {
-                            status2 = _wordsList[index].isHidden();
+                            status2 = _wordsList[index].IsHidden();
                             _wordsList[index].Hide(_wordsList[index]);
                             index += 1;
                         }
@@ -66,26 +71,30 @@ public class Scripture
                         }
                     }
                 }
+                //If the word is shown, the program will hide the word.
                 else
                 {
                     _wordsList[randomIndex].Hide(_wordsList[randomIndex]);
                 }
             }
         }
+        //If the number of visible words is Less than 5, the program will hide the rest of the Shown words.
         else
         {
             for (int i = 0; i < visibleWords; i++)
             {
                 int index = 0;
                 int randomIndex = random.Next(numberOfWords);
-                string status2 = _wordsList[randomIndex].isHidden();
+                //The program will check if the word is hidden or shown.
+                string status2 = _wordsList[randomIndex].IsHidden();
+                 //If the word is hidden the program will do a while to find a word from the _wordsList that is shown to hide it.
                 if (status2 == "yes")
                 {
                     while (status2 == "yes")
                     {
                         if (index < _wordsList.Count())
                         {
-                            status2 = _wordsList[index].isHidden();
+                            status2 = _wordsList[index].IsHidden();
                             _wordsList[index].Hide(_wordsList[index]);
                             index += 1;
                         }
@@ -95,6 +104,7 @@ public class Scripture
                         }
                     }
                 }
+                //If the word is shown, the program will hide the word.
                 else
                 {
                     _wordsList[randomIndex].Hide(_wordsList[randomIndex]);
@@ -104,23 +114,26 @@ public class Scripture
 
         return _wordsList;
     }
-    public void getRenderedText()
+    //GetRenderedText() Method will show the updated _wordsList values on the console.
+    public void GetRenderedText()
     {
         string scriptureWords = "";
 
         foreach (Word word1 in _wordsList)
         {
-            scriptureWords = scriptureWords + " " + word1.getWord();
+            scriptureWords = scriptureWords + " " + word1.GetWord();
         }
         Console.WriteLine($"{_reference} {scriptureWords}");
     }
 
+    //IsCompletelyHidden() Method will end the program if all the words on the _wordsList variable is hidden.
     public void IsCompletelyHidden()
     {
         int numberOfVisibleWords = 0;
+        //For loop to check if there is a visible word on the _wordsList variable.
         foreach (Word word4 in _wordsList)
         {
-            string visibility = word4.getVisibility();
+            string visibility = word4.GetVisibility();
             if (visibility == "Show")
             {
                 numberOfVisibleWords = +1;
@@ -129,17 +142,18 @@ public class Scripture
         if (numberOfVisibleWords == 0)
         {
             Console.Clear();
-            getRenderedText();
+            GetRenderedText();
             Environment.Exit(0);
         }
     }
 
+    //VisibleWords() method is used to get the number of visible words on the _wordsList variable.
     private int VisibleWords()
     {
         int numberOfVisibleWords = 0;
         foreach (Word word4 in _wordsList)
         {
-            string visibility = word4.getVisibility();
+            string visibility = word4.GetVisibility();
             if (visibility == "Show")
             {
                 numberOfVisibleWords = numberOfVisibleWords + 1;
