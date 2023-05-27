@@ -17,3 +17,5 @@ class Program
         }
     }
 }
+//Creativity: I created a list of scriptures and reference on the Scripture() constructor. 
+//The constructor will select a random scripture from the list and the program will display the random scripture.

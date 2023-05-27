@@ -20,9 +20,12 @@ public class Scripture
         Reference reference3 = new Reference("Doctrine and Covenants", 1, 37, 38);
         referenceList.Add(reference3.GetReference());
         scriptureList.Add("Search these commandments, for they are true and faithful, and the prophecies and promises which are in them shall all be fulfilled. What I the Lord have spoken, I have spoken, and I excuse not myself; and though the heavens and the earth pass away, my word shall not pass away, but shall all be fulfilled, whether by mine own voice or by the voice of my servants, it is the same.");
-        //Selecting a random index from 0 - 2 from the reference and scripture list to add it to the  _scriptureText and _reference variables.
+        Reference reference4=new Reference("John",3,5);
+        referenceList.Add(reference4.GetReference());
+        scriptureList.Add("Jesus answered, Verily, verily, I say unto thee, Except a man be born of water and of the Spirit, he cannot enter into the kingdom of God.");
+        //Selecting a random index from 0 - 3 from the reference and scripture list to add it to the  _scriptureText and _reference variables.
         Random random1 = new Random();
-        int randomIndex1 = random1.Next(0, 2);
+        int randomIndex1 = random1.Next(0, 3);
         _scriptureText = scriptureList[randomIndex1];
         _reference = referenceList[randomIndex1];
         //Adding the words from the scripture to the _wordsList 
