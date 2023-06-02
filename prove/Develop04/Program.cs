@@ -4,6 +4,40 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop04 World!");
+        Console.Clear();
+        BreathingActivity breathingActivity=new BreathingActivity();
+        ReflectingActivity reflectingActivity=new ReflectingActivity();
+        ListingActivity listingActivity=new ListingActivity();
+        string menuOption="";
+        while(menuOption!="4")
+        {
+            breathingActivity.DisplayMenu();
+            Console.Write("Select a choice from the menu: ");
+            menuOption=Console.ReadLine();
+            if(menuOption=="1")
+            {
+                breathingActivity.DisplayStartingMessage();
+                Console.Clear();
+                breathingActivity.RunActivity();
+                
+            }
+            else if (menuOption=="2")
+            {
+                reflectingActivity.DisplayStartingMessage();
+                Console.Clear();
+                reflectingActivity.RunActivity();
+            }
+            else if(menuOption=="3")
+            {
+                listingActivity.DisplayStartingMessage();
+                Console.Clear();
+                listingActivity.RunActivity();
+            }
+            else if(menuOption=="4")
+            {
+                Environment.Exit(0);
+            }
+            Console.Clear();
+        }
     }
 }
