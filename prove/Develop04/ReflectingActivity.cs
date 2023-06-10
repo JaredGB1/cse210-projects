@@ -2,6 +2,8 @@ public class ReflectingActivity:Activity
 {
     private List<string> _promptsList=new List<string>();
     private List<string> _questionsList=new List<string>();
+    private int _totalNumberOfTimes=0;
+    private int _totalNumberOfSeconds=0;
     public ReflectingActivity()
     {
         SetActivityName("Reflecting");
@@ -20,11 +22,23 @@ public class ReflectingActivity:Activity
         _questionsList.Add("How can you keep this experience in mind in the future?");
         _questionsList.Add("How did you get started?");
     }
+    public int GetTotalNumberOfSeconds()
+    {
+        return _totalNumberOfSeconds;
+    }
+    
+    public int GetTotalNumberOfTimes()
+    {
+        return _totalNumberOfTimes;
+    }
     public void RunActivity()
     {
         Random random= new Random();
         int randomPromptIndex=random.Next(0,3);
         int durationInSeconds=GetDurationInSeconds();
+        Activity activity= new Activity();
+        activity.SetActivityName("Reflecting");
+        activity.SetDurationInSeconds(durationInSeconds);
         Console.WriteLine("Get Ready...");
         PausingWhileShowingASpinner(5);
         Console.WriteLine("Consider the following prompt: ");
@@ -55,6 +69,8 @@ public class ReflectingActivity:Activity
         Console.WriteLine();
         DisplayEndingMessage();
         PausingWhileShowingASpinner(6);
-
+        AddActivityList(activity);
+        _totalNumberOfSeconds=_totalNumberOfSeconds+durationInSeconds;
+        _totalNumberOfTimes=_totalNumberOfTimes+1;
     }
 }

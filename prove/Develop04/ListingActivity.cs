@@ -1,6 +1,8 @@
 public class ListingActivity:Activity
 {
     private List<string> _promptsList=new List<string>();
+    private int _totalNumberOfTimes=0;
+    private int _totalNumberOfSeconds=0;
     public ListingActivity()
     {
         SetActivityName("Listing");
@@ -12,6 +14,15 @@ public class ListingActivity:Activity
         _promptsList.Add("Who are some of your personal heroes?");
     }
 
+    public int GetTotalNumberOfSeconds()
+    {
+        return _totalNumberOfSeconds;
+    }
+    
+    public int GetTotalNumberOfTimes()
+    {
+        return _totalNumberOfTimes;
+    }
     public void RunActivity()
     {
         Random random=new Random();
@@ -19,6 +30,9 @@ public class ListingActivity:Activity
         string randomPrompt= _promptsList[randomIndex];
         int numberOfItems=0;
         int durationInSeconds=GetDurationInSeconds();
+        Activity activity= new Activity();
+        activity.SetActivityName("Listing");
+        activity.SetDurationInSeconds(durationInSeconds);
         Console.WriteLine("Get Ready...");
         PausingWhileShowingASpinner(5);
         Console.WriteLine("List as many responses you can to the following prompt: ");
@@ -44,6 +58,9 @@ public class ListingActivity:Activity
         Console.WriteLine();
         DisplayEndingMessage();
         PausingWhileShowingASpinner(6);
+        AddActivityList(activity);
+        _totalNumberOfSeconds=_totalNumberOfSeconds+durationInSeconds;
+        _totalNumberOfTimes=_totalNumberOfTimes+1;
     }
 
 }

@@ -3,6 +3,7 @@ public class Activity
     private string _activityName;
     private string _description;
     private int _durationInSeconds;
+    private List<Activity> _activityList=new List<Activity>();
     public Activity()
     {
         _activityName="";
@@ -16,9 +17,17 @@ public class Activity
     {
         _description=description;
     }
+    public void SetDurationInSeconds(int durationInSeconds)
+    {
+        _durationInSeconds=durationInSeconds;
+    }
     public int GetDurationInSeconds()
     {
         return _durationInSeconds;
+    }
+    public string GetActivityName()
+    {
+        return _activityName;
     }
     public void DisplayStartingMessage()
     {
@@ -69,4 +78,39 @@ public class Activity
         Console.WriteLine("  3. Start listing activity");
         Console.WriteLine("  4. Quit");
     }
+
+    public void AddActivityList(Activity activity)
+    {
+        _activityList.Add(activity);
+    }
+    public void SaveLogFile(BreathingActivity breathingActivity, ReflectingActivity reflectingActivity, ListingActivity listingActivity)
+    {
+        
+        using (StreamWriter outputFile = new StreamWriter("log.csv"))
+        {
+            outputFile.WriteLine("Activity Name, Total number of seconds, Total number of Times");
+            outputFile.WriteLine($"{breathingActivity.GetActivityName()}, {breathingActivity.GetTotalNumberOfSeconds()}, {breathingActivity.GetTotalNumberOfTimes()}");
+            outputFile.WriteLine($"{reflectingActivity.GetActivityName()}, {reflectingActivity.GetTotalNumberOfSeconds()}, {reflectingActivity.GetTotalNumberOfTimes()}");
+            outputFile.WriteLine($"{listingActivity.GetActivityName()}, {listingActivity.GetTotalNumberOfSeconds()}, {listingActivity.GetTotalNumberOfTimes()}");
+            outputFile.WriteLine();
+            outputFile.WriteLine("Activity Log");
+            outputFile.WriteLine("Activity, Duration in Seconds");
+            foreach(Activity activity1 in breathingActivity._activityList)
+            {
+                outputFile.WriteLine($"{activity1._activityName},{activity1._durationInSeconds}");
+            }
+            foreach(Activity activity1 in reflectingActivity._activityList)
+            {
+                outputFile.WriteLine($"{activity1._activityName},{activity1._durationInSeconds}");
+            }
+            foreach(Activity activity1 in listingActivity._activityList)
+            {
+                outputFile.WriteLine($"{activity1._activityName},{activity1._durationInSeconds}");
+            }
+        }
+        Console.WriteLine($"A log of the activities has been saved as log.csv");
+    }
+
+
+    
 }
