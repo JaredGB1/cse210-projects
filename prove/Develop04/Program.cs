@@ -44,3 +44,8 @@ class Program
         }
     }
 }
+//Creativity:
+//For creativity, the program will save a Log CSV file when the user types "4" to quit the program.
+//The log file contains the number of times the user did the different activities.
+//The log file will also have the total number of seconds spent on the  different activities
+//The log file will also show the activities with the number of seconds spent by the user.
