@@ -1,5 +1,6 @@
 public class EternalGoals:Goals
 {
+    
     private int _amountOfPoints;
     public EternalGoals(string name, string description, int amountOfPoints)
     {
@@ -23,7 +24,7 @@ public class EternalGoals:Goals
     }
     public override string GetGoalInformation()
     {
-        string GoalInformation=$"EternalGoals:{GetGoalName()}~{GetGoalDescription()}~{_amountOfPoints}";
+        string GoalInformation=$"EternalGoals;{GetGoalName()}~{GetGoalDescription()}~{_amountOfPoints}";
         return GoalInformation;
     }
      public override int RecordEvent()

@@ -31,7 +31,7 @@ public class SimpleGoals:Goals
     }
     public override string GetGoalInformation()
     {
-        string GoalInformation=$"SimpleGoals:{GetGoalName()}~{GetGoalDescription()}~{_amountOfPoints}~{_completed}";
+        string GoalInformation=$"SimpleGoals;{GetGoalName()}~{GetGoalDescription()}~{_amountOfPoints}~{_completed}";
         return GoalInformation;
     }
     public override int RecordEvent()

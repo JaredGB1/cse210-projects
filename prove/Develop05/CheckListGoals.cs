@@ -37,7 +37,7 @@ public class CheckListGoals:Goals
     }
      public override string GetGoalInformation()
     {
-        string GoalInformation=$"CheckListGoals:{GetGoalName()}~{GetGoalDescription()}~{_amountOfPoints}~{_bonusPoints}~{_totalNumberOfTimes}~{_numberOfTimesCompleted}~{_completed}";
+        string GoalInformation=$"CheckListGoals;{GetGoalName()}~{GetGoalDescription()}~{_amountOfPoints}~{_bonusPoints}~{_totalNumberOfTimes}~{_numberOfTimesCompleted}~{_completed}";
         return GoalInformation;
     }
     public override int RecordEvent()
