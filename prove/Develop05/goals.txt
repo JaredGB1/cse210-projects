@@ -1,7 +1,5 @@
-1510,3
+1050,2
 SimpleGoals;Give a talk~Speak in Sacrament meeting when asked~100~True
 EternalGoals;Study the scriptures~Study for at least 10 minutes~50
 CheckListGoals;Attend the temple~Attend and perform any ordinance~50~500~3~3~True
-CheckListGoals;Wake up early~Wake up by at least 6:00 am~10~1000~10~1~False
-SimpleGoals;hola~hola~250~True
-SimpleGoals;Test~Test~400~True
+SimpleGoals;Read a book~Read 1st Nephi~250~True
