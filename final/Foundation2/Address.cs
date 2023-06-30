@@ -12,7 +12,7 @@ public class Address
         _country=country;
     }
 
-    public string GetFullAddress()
+    public string GetStringAddress()
     {
         string fullAddress=$"{_streetAddress}, {_city}, {_stateOrProvince}, {_country}";
         return fullAddress;

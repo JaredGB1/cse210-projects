@@ -16,7 +16,7 @@ public class Customer
 
     public string GetCustomerStringAddress()
     {
-       return _address.GetFullAddress();
+       return _address.GetStringAddress();
     }
     public bool LivesInTheUSA()
     {
