@@ -12,7 +12,7 @@ public class Order
         Product product=new Product(name,productId,price,quantity);
         _productsList.Add(product);
     }
-    public void DisplayTotalPrice()
+    public double DisplayTotalPrice()
     {
         double total=0;
         int shippingFee=0;
@@ -31,21 +31,27 @@ public class Order
         Console.WriteLine($"SubTotal: ${total}, Shipping fee: ${shippingFee}");
         total=total+shippingFee;
         Console.WriteLine($"Total: ${total}");
+        return total;
     }
 
-    public void DisplayPackingLabel()
-    {
-        Console.WriteLine("Packing Label");
+    public string DisplayPackingLabel()
+    {   
+        string packingLabel="Packing Label";
+        //Console.WriteLine("Packing Label");
         foreach(Product product in _productsList)
         {
-            Console.WriteLine($"Product Name {product.GetProductName()} - Product ID {product.GetProductID()}");
+            packingLabel=packingLabel+$"\nProduct Name {product.GetProductName()} - Product ID {product.GetProductID()}";
+            //Console.WriteLine($"Product Name {product.GetProductName()} - Product ID {product.GetProductID()}");
         }
+        return packingLabel;
     }
 
-    public void DisplayShippingLabel()
+    public string DisplayShippingLabel()
     {
-        Console.WriteLine("Shipping Label");
-        Console.WriteLine($"Name: {_customer.GetCustomerName()} - Address: {_customer.GetCustomerStringAddress()}");
+        string shippingLabel=$"Shipping Label\nName: {_customer.GetCustomerName()} - Address: {_customer.GetCustomerStringAddress()} ";   
+        //Console.WriteLine("Shipping Label");
+        //Console.WriteLine($"Name: {_customer.GetCustomerName()} - Address: {_customer.GetCustomerStringAddress()}");
+        return shippingLabel;
     }
 
 

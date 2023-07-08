@@ -11,8 +11,8 @@ class Program
         order1.AddAProduct("Amplifying Tome",2,20,1);
         order1.AddAProduct("Ruby Crystal",3,15,2);
         Console.WriteLine("----Order 1 Details----");
-        order1.DisplayShippingLabel();
-        order1.DisplayPackingLabel();
+        Console.WriteLine(order1.DisplayShippingLabel());
+        Console.WriteLine(order1.DisplayPackingLabel());
         order1.DisplayTotalPrice();
         
 
@@ -24,8 +24,8 @@ class Program
         order2.AddAProduct("Cloak of Agility",6,12.5,2);
         Console.WriteLine();
         Console.WriteLine("----Order 2 Details----");
-        order2.DisplayShippingLabel();
-        order2.DisplayPackingLabel();
+        Console.WriteLine(order2.DisplayShippingLabel());
+        Console.WriteLine(order2.DisplayPackingLabel());
         order2.DisplayTotalPrice();
     }
 }
