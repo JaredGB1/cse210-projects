@@ -38,6 +38,6 @@ public class Event
     {
         Console.WriteLine($"Event type: {_eventType}");
         Console.WriteLine($"Title: {_title}");
-        Console.WriteLine($"Address: {_address.ReturnAddressString()}");
+        Console.WriteLine($"Date: {_date}");
     }
 }
